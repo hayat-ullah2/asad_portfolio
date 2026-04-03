@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --color-brand-purple: #7c3aed;
+  --color-brand-blue: #2563eb;
+  --color-brand-bg: #020617;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { min-height: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: #020617;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, a { outline: none; }
+
+/* ──────────────────────────────────────────────────
+   Features auto-scroll carousel
+────────────────────────────────────────────────── */
+@keyframes scroll-features {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.features-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-features 32s linear infinite;
+}
+
+.features-track:hover {
+  animation-play-state: paused;
+}
+
+/* ──────────────────────────────────────────────────
+   Testimonials carousel transition
+────────────────────────────────────────────────── */
+.testimonials-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+/* ──────────────────────────────────────────────────
+   Hero background gradient / pattern
+────────────────────────────────────────────────── */
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,58,237,0.35) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 40% at 80% 60%, rgba(37,99,235,0.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────────
+   Gradient text utility
+────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ──────────────────────────────────────────────────
+   Glassmorphism card
+────────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ──────────────────────────────────────────────────
+   Gradient border card
+────────────────────────────────────────────────── */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(168,85,247,0.5), rgba(59,130,246,0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────────
+   Custom scrollbar
+────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #020617; }
+::-webkit-scrollbar-thumb { background: rgba(124,58,237,0.5); border-radius: 3px; }
+
+/* ──────────────────────────────────────────────────
+   Navbar scroll effect (added via JS class)
+────────────────────────────────────────────────── */
+.navbar-scrolled {
+  background: rgba(2,6,23,0.9) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+/* ──────────────────────────────────────────────────
+   Audio player styling
+────────────────────────────────────────────────── */
+audio {
+  width: 100%;
+  height: 36px;
+  border-radius: 8px;
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* ──────────────────────────────────────────────────
+   Video overlay play button
+────────────────────────────────────────────────── */
+.video-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2,6,23,0.5);
+  cursor: pointer;
+  border-radius: inherit;
+  transition: background 0.2s;
+}
+.video-play-overlay:hover { background: rgba(2,6,23,0.3); }
+.video-play-overlay .play-icon {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  color: #fff;
+  transition: transform 0.2s;
+}
+.video-play-overlay:hover .play-icon { transform: scale(1.1); }
+
+/* ──────────────────────────────────────────────────
+   Mobile nav animation
+────────────────────────────────────────────────── */
+.mobile-nav-enter {
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+.mobile-nav-open {
+  transform: translateX(0) !important;
+}
+
+/* ──────────────────────────────────────────────────
+   FAQ accordion
+────────────────────────────────────────────────── */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.faq-answer.open {
+  max-height: 500px;
+}
