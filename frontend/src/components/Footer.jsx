@@ -1,26 +1,28 @@
 const LINKS = {
-  Product: [
-    { label: 'Features',    href: '#features' },
-    { label: 'AI Agents',   href: '#agents' },
-    { label: 'Agent Types', href: '#agent-types' },
-    { label: 'Analytics',   href: '#analytics' },
+  Services: [
+    { label: 'Software Apps',  href: '#services' },
+    { label: 'Web',            href: '#services' },
+    { label: 'Mobile (iOS/Android)', href: '#services' },
+    { label: 'AI Integration', href: '#services' },
   ],
   Company: [
-    { label: 'About',         href: '#about' },
-    { label: 'Testimonials',  href: '#testimonials' },
-    { label: 'Community',     href: '#community' },
+    { label: 'Results',       href: '#results' },
+    { label: 'Process',       href: '#process' },
+    { label: 'Pricing',       href: '#pricing' },
     { label: 'FAQ',           href: '#faq' },
   ],
   Contact: [
-    { label: 'info@sixflowautomations.com', href: 'mailto:info@sixflowautomations.com' },
-    { label: 'Schedule a Call',             href: '#', cta: true },
+    { label: 'hello@nexuraawt.com',      href: 'mailto:hello@nexuraawt.com' },
+    { label: 'Book a Free Consultation', href: '#', cta: true },
   ],
 }
 
+// 🔧 Replace # with your NexuraAWT social account URLs once they exist.
 const SOCIALS = [
-  { icon: 'fab fa-tiktok',    href: 'https://www.tiktok.com/@sixflowautomations',        label: 'TikTok' },
-  { icon: 'fab fa-youtube',   href: 'https://www.youtube.com/@SixflowAutomations',       label: 'YouTube' },
-  { icon: 'fab fa-instagram', href: 'https://www.instagram.com/sixflowautomations/',     label: 'Instagram' },
+  { icon: 'fab fa-tiktok',    href: '#', label: 'TikTok' },
+  { icon: 'fab fa-youtube',   href: '#', label: 'YouTube' },
+  { icon: 'fab fa-instagram', href: '#', label: 'Instagram' },
+  { icon: 'fab fa-linkedin',  href: '#', label: 'LinkedIn' },
 ]
 
 export default function Footer({ onGetStarted }) {
@@ -40,14 +42,13 @@ export default function Footer({ onGetStarted }) {
           {/* Brand */}
           <div className="col-span-2 sm:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <img src="/logo.png" alt="SixFlow Automations" className="h-9 w-auto" />
               <div className="leading-none">
-                <div className="font-bold text-white text-sm">SixFlow</div>
-                <div className="text-xs text-gray-400 uppercase tracking-wider">Automations</div>
+                <div className="font-bold text-white text-sm">NexuraAWT</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">Build · AI · Web</div>
               </div>
             </div>
             <p className="text-gray-500 text-xs leading-relaxed mb-5">
-              AI voice agents that turn every call into revenue. Available 24/7 for your business.
+              A senior product team for hire. We ship software, web, mobile and AI products other teams quote you 6 months for.
             </p>
             <div className="flex gap-3">
               {SOCIALS.map(s => (
@@ -75,7 +76,7 @@ export default function Footer({ onGetStarted }) {
                     {item.cta ? (
                       <button
                         onClick={onGetStarted}
-                        className="text-purple-400 hover:text-purple-300 text-sm transition-colors"
+                        className="text-purple-400 hover:text-purple-300 text-sm transition-colors text-left"
                       >
                         {item.label}
                       </button>
@@ -97,7 +98,7 @@ export default function Footer({ onGetStarted }) {
 
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600">
-          <span>© {new Date().getFullYear()} SixFlow Automations. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} NexuraAWT. All rights reserved.</span>
           <div className="flex gap-4">
             <a href="#" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-gray-400 transition-colors">Terms of Service</a>

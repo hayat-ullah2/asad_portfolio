@@ -1,68 +1,68 @@
-const FEATURES = [
+/* ──────────────────────────────────────────────────
+   PAIN / INTEREST
+   3 cards naming the buyer's actual problem so they
+   self-identify. Edit copy via PAINS below.
+────────────────────────────────────────────────── */
+
+const PAINS = [
   {
-    icon: 'fas fa-bolt',
-    title: 'Lightning Fast Response',
-    desc: 'Answer every call in under 3 seconds. No more missed opportunities or frustrated customers waiting in phone queues.',
+    icon: 'fas fa-hourglass-half',
+    title: 'Roadmaps that slip by quarters',
+    desc: 'You agreed to "8 weeks" and you\'re now in month five. Engineers ship in fragments while competitors ship features. Sound familiar?',
   },
   {
-    icon: 'fas fa-brain',
-    title: 'Smart Lead Qualification',
-    desc: 'AI agents ask the right questions, qualify prospects, and collect crucial information so you only talk to serious buyers.',
+    icon: 'fas fa-user-slash',
+    title: 'Freelancers that ghost mid-build',
+    desc: 'Solo devs vanish, communication dies, and you end up paying twice — once to start, once to clean up the mess and finish.',
   },
   {
-    icon: 'fas fa-calendar-check',
-    title: 'Instant Booking',
-    desc: 'Seamlessly book appointments directly into your calendar while the prospect is hot and engaged.',
-  },
-  {
-    icon: 'fas fa-chart-line',
-    title: 'Revenue Growth',
-    desc: 'Turn missed calls into closed deals. Our clients see immediate revenue increases from captured leads.',
-  },
-  {
-    icon: 'fas fa-clock',
-    title: '24/7 Availability',
-    desc: 'Never miss another call. Your AI receptionist works nights, weekends, and holidays without breaks.',
-  },
-  {
-    icon: 'fas fa-plug',
-    title: 'Seamless Integration',
-    desc: 'Connect with your favorite CRM, calendar, and business tools. Works with any phone system in minutes.',
+    icon: 'fas fa-robot',
+    title: 'No serious AI capability in-house',
+    desc: 'Every competitor brief mentions "AI" and your team can\'t evaluate, ship, or even scope it. The gap widens every month you wait.',
   },
 ]
 
-// Duplicate for infinite scroll
-const TRACK = [...FEATURES, ...FEATURES]
-
-export default function Features() {
+export default function Features({ onGetStarted }) {
   return (
-    <section id="features" className="py-24 overflow-hidden">
+    <section id="pain" className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full px-4 py-1.5 text-sm font-medium mb-5">
+            <i className="fas fa-triangle-exclamation" />
+            <span>Why teams come to us</span>
+          </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Why Businesses Choose SixFlow
+            If any of this sounds like your last build…
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Transform your customer communication with AI that works harder than your best employee
+            You're not alone. These are the three reasons engineering leaders book a call with us.
           </p>
         </div>
-      </div>
 
-      {/* Full-width carousel (intentionally bleeds outside container) */}
-      <div className="overflow-hidden">
-        <div className="features-track gap-6 px-3">
-          {TRACK.map((feature, i) => (
+        <div className="grid md:grid-cols-3 gap-6">
+          {PAINS.map((p, i) => (
             <div
               key={i}
-              className="glass-card rounded-2xl p-6 flex-shrink-0 w-72"
+              className="glass-card rounded-2xl p-7 hover:border-purple-500/30 transition-colors"
             >
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600/20 to-blue-600/20 border border-purple-500/20 flex items-center justify-center mb-5">
-                <i className={`${feature.icon} text-purple-400 text-lg`} />
+                <i className={`${p.icon} text-purple-400 text-lg`} />
               </div>
-              <h3 className="text-white font-semibold text-lg mb-2">{feature.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
+              <h3 className="text-white font-semibold text-lg mb-2">{p.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">{p.desc}</p>
             </div>
           ))}
+        </div>
+
+        {/* Section-level CTA */}
+        <div className="mt-12 text-center">
+          <button
+            onClick={onGetStarted}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg shadow-purple-500/20"
+          >
+            <i className="fas fa-calendar-alt" />
+            Talk to an Engineer — Free 30 min
+          </button>
         </div>
       </div>
     </section>

@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react'
 
+// Funnel section anchors (in scroll order)
 const NAV_LINKS = [
-  { href: '#features',    label: 'Features' },
-  { href: '#about',       label: 'About' },
-  { href: '#agents',      label: 'AI Agents' },
-  { href: '#agent-types', label: 'Agent Types' },
-  { href: '#analytics',   label: 'Analytics' },
-  { href: '#testimonials',label: 'Testimonials' },
-  { href: '#community',   label: 'Community' },
-  { href: '#faq',         label: 'FAQ' },
+  { href: '#services',     label: 'Services' },
+  { href: '#results',      label: 'Results' },
+  { href: '#process',      label: 'Process' },
+  { href: '#pricing',      label: 'Pricing' },
+  { href: '#testimonials', label: 'Clients' },
+  { href: '#faq',          label: 'FAQ' },
 ]
 
 export default function Navbar({ onGetStarted }) {
@@ -48,10 +47,15 @@ export default function Navbar({ onGetStarted }) {
               className="flex items-center gap-3 flex-shrink-0"
               onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
             >
-              <img src="/logo.png" alt="SixFlow Automations" className="h-9 w-auto" />
-              <div className="leading-none">
-                <div className="font-bold text-white text-base tracking-tight">SixFlow</div>
-                <div className="text-xs text-gray-400 tracking-wider uppercase">Automations</div>
+              <img
+                src="/logo.png"
+                alt="NexuraAWT"
+                className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl object-contain flex-shrink-0"
+              />
+              <div className="leading-none min-w-0">
+                <div className="font-bold text-white text-sm sm:text-base tracking-tight">NexuraAWT</div>
+                {/* Subtitle hidden on very narrow phones to leave room for the CTA */}
+                <div className="hidden sm:block text-xs text-gray-400 tracking-wider uppercase">Build · AI · Web</div>
               </div>
             </a>
 
@@ -69,26 +73,38 @@ export default function Navbar({ onGetStarted }) {
               ))}
             </div>
 
-            {/* Desktop CTA */}
+            {/* Desktop sticky primary CTA — always visible while navbar is mounted */}
             <div className="hidden lg:flex items-center">
               <button
                 onClick={onGetStarted}
                 className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg shadow-purple-500/20"
               >
-                Get Started
+                <i className="fas fa-calendar-alt mr-2" />
+                Book Free Consultation
               </button>
             </div>
 
-            {/* Hamburger */}
-            <button
-              className="lg:hidden flex flex-col gap-1.5 p-2"
-              onClick={() => setMobileOpen(v => !v)}
-              aria-label="Toggle menu"
-            >
-              <span className={`block h-0.5 w-6 bg-white transition-all ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`block h-0.5 w-6 bg-white transition-all ${mobileOpen ? 'opacity-0' : ''}`} />
-              <span className={`block h-0.5 w-6 bg-white transition-all ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-            </button>
+            {/* Mobile inline CTA + Hamburger — compact sticky primary action */}
+            <div className="lg:hidden flex items-center gap-2 flex-shrink-0">
+              <button
+                onClick={onGetStarted}
+                aria-label="Book a free consultation"
+                className="inline-flex items-center px-3 py-2 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-purple-600 to-blue-600 shadow-md shadow-purple-500/30 whitespace-nowrap"
+              >
+                <i className="fas fa-calendar-alt sm:mr-1.5" />
+                {/* Label hidden on tiny screens (<360px); icon-only fits in any width */}
+                <span className="hidden min-[360px]:inline">Book Call</span>
+              </button>
+              <button
+                className="flex flex-col gap-1.5 p-2"
+                onClick={() => setMobileOpen(v => !v)}
+                aria-label="Toggle menu"
+              >
+                <span className={`block h-0.5 w-6 bg-white transition-all ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`block h-0.5 w-6 bg-white transition-all ${mobileOpen ? 'opacity-0' : ''}`} />
+                <span className={`block h-0.5 w-6 bg-white transition-all ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -110,10 +126,14 @@ export default function Navbar({ onGetStarted }) {
         {/* Mobile header */}
         <div className="flex items-center justify-between p-5 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="SixFlow Automations" className="h-8 w-auto" />
+            <img
+              src="/logo.png"
+              alt="NexuraAWT"
+              className="h-9 w-9 rounded-xl object-contain"
+            />
             <div className="leading-none">
-              <div className="font-bold text-white text-sm">SixFlow</div>
-              <div className="text-xs text-gray-400 uppercase tracking-wider">Automations</div>
+              <div className="font-bold text-white text-sm">NexuraAWT</div>
+              <div className="text-xs text-gray-400 uppercase tracking-wider">Build · AI · Web</div>
             </div>
           </div>
           <button
@@ -144,7 +164,8 @@ export default function Navbar({ onGetStarted }) {
             onClick={() => { closeMobile(); onGetStarted() }}
             className="w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg shadow-purple-500/20"
           >
-            Get Started
+            <i className="fas fa-calendar-alt mr-2" />
+            Book Free Consultation
           </button>
         </div>
       </nav>
